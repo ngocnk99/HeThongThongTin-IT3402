@@ -53,7 +53,7 @@
         <div class="form__main-or">OR</div>
         <div class="form__main-bot">
           <div class="bot-btn">
-            <div class="facebook-btn">Facebook</div>
+            <div class="facebook-btn" @click="signInWithFB">Facebook</div>
             <div class="google-btn" @click="signInWithGG">Google</div>
           </div>
           <div style="margin-top: 10px">
@@ -78,7 +78,6 @@
 <script>
 import firebase from 'firebase';
 import User from '../models/user';
-
 export default {
   name: 'Login',
   data() {
@@ -132,11 +131,38 @@ export default {
         .then((result) => {
           // This gives you a Google Access Token. You can use it to access the Google API.
           // The signed-in user info.
-
           this.$store
             .dispatch('auth/login', {
               username: result.additionalUserInfo.profile.name,
               password: result.additionalUserInfo.profile.email,
+            })
+            .then(
+              () => {
+                this.$router.push('/profile');
+              },
+              (error) => {
+                this.loading = false;
+                this.message =
+                  (error.response &&
+                    error.response.data &&
+                    error.response.data.message) ||
+                  error.message ||
+                  error.toString();
+              }
+            );
+        })
+        .catch(function () {});
+    },
+    signInWithFB() {
+      var provider = new firebase.auth.FacebookAuthProvider();
+      firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then((result) => {
+          this.$store
+            .dispatch('auth/login', {
+              username: result.user.displayName,
+              password: result.user.email,
             })
             .then(
               () => {

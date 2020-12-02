@@ -59,7 +59,7 @@
           <div class="form__main-or">OR</div>
           <div class="form__main-bot">
             <div class="bot-btn">
-              <div class="facebook-btn">Facebook</div>
+              <div class="facebook-btn" @click="signUpWithFB">Facebook</div>
               <div class="google-btn" @click="signUpWithGG">Google</div>
             </div>
             <div style="margin-top: 10px">
@@ -168,6 +168,49 @@ export default {
         // The signed-in user info.
 
         .catch(function () {});
+    },
+    signUpWithFB() {
+      var provider = new firebase.auth.FacebookAuthProvider();
+      firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then((result) => {
+          this.$store
+            .dispatch('auth/register', {
+              username: result.user.displayName,
+              email: result.user.email,
+              password: result.user.email,
+            })
+            .then(
+              (data) => {
+                this.message = data.message;
+                this.successful = true;
+              },
+              (error) => {
+                this.message =
+                  (error.response &&
+                    error.response.data &&
+                    error.response.data.message) ||
+                  error.message ||
+                  error.toString();
+                this.successful = false;
+              }
+            )
+            .then(() => {
+              this.$store.dispatch('auth/login', {
+                username: result.user.displayName,
+                password: result.user.email,
+              });
+            });
+        })
+        .catch(function (error) {
+          this.message =
+            (error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+            error.message ||
+            error.toString();
+        });
     },
   },
 };
