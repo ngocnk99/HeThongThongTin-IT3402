@@ -15,7 +15,9 @@
           <router-link to="/mod" class="nav-link">Moderator Board</router-link>
         </li>
         <li class="nav-item">
-          <router-link v-if="currentUser" to="/user" class="nav-link">User</router-link>
+          <router-link v-if="currentUser" to="/user" class="nav-link"
+            >User</router-link
+          >
         </li>
       </div>
 
@@ -72,13 +74,19 @@ export default {
       }
 
       return false;
-    }
+    },
   },
   methods: {
     logOut() {
       this.$store.dispatch('auth/logout');
       this.$router.push('/login');
-    }
-  }
+    },
+  },
 };
 </script>
+
+<style >
+#app {
+  background-color: #333333;
+}
+</style>

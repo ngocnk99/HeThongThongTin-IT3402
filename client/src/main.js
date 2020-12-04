@@ -9,6 +9,7 @@ import Vuex from 'vuex';
 import firebase from 'firebase/app'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
 import {
     faHome,
     faUser,
