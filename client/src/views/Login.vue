@@ -108,7 +108,7 @@ export default {
         if (this.user.username && this.user.password) {
           this.$store.dispatch('auth/login', this.user).then(
             () => {
-              this.$router.push('/profile');
+              this.$router.push('/mybook');
             },
             (error) => {
               this.loading = false;
@@ -138,7 +138,7 @@ export default {
             })
             .then(
               () => {
-                this.$router.push('/profile');
+                this.$router.push('/mybook');
               },
               (error) => {
                 this.loading = false;
@@ -166,7 +166,7 @@ export default {
             })
             .then(
               () => {
-                this.$router.push('/profile');
+                this.$router.push('/mybook');
               },
               (error) => {
                 this.loading = false;

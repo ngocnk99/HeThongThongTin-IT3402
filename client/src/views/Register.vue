@@ -158,10 +158,25 @@ export default {
               }
             )
             .then(() => {
-              this.$store.dispatch('auth/login', {
-                username: result.additionalUserInfo.profile.name,
-                password: result.additionalUserInfo.profile.email,
-              });
+              this.$store
+                .dispatch('auth/login', {
+                  username: result.additionalUserInfo.profile.name,
+                  password: result.additionalUserInfo.profile.email,
+                })
+                .then(
+                  () => {
+                    this.$router.push('/mybook');
+                  },
+                  (error) => {
+                    this.loading = false;
+                    this.message =
+                      (error.response &&
+                        error.response.data &&
+                        error.response.data.message) ||
+                      error.message ||
+                      error.toString();
+                  }
+                );
             });
         })
         // This gives you a Google Access Token. You can use it to access the Google API.
@@ -196,10 +211,25 @@ export default {
               }
             )
             .then(() => {
-              this.$store.dispatch('auth/login', {
-                username: result.user.displayName,
-                password: result.user.email,
-              });
+              this.$store
+                .dispatch('auth/login', {
+                  username: result.user.displayName,
+                  password: result.user.email,
+                })
+                .then(
+                  () => {
+                    this.$router.push('/mybook');
+                  },
+                  (error) => {
+                    this.loading = false;
+                    this.message =
+                      (error.response &&
+                        error.response.data &&
+                        error.response.data.message) ||
+                      error.message ||
+                      error.toString();
+                  }
+                );
             });
         })
         .catch(function (error) {

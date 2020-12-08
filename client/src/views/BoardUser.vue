@@ -1,258 +1,723 @@
 <template>
-  <div class="align-item-center">
-    <!-- BOOK WRAP -->
-    <div class="book-wrap">
-      <div class="cover cover-left"></div>
+  <div class="mybook">
+    <div class="align-item-center forComputer">
+      <!-- BOOK WRAP -->
+      <div class="book-wrap">
+        <div class="cover cover-left"></div>
 
-      <!-- BOOK -->
-      <div class="book">
-        <!-- page -->
-        <div class="book-page">
-          <div class="text-center">
-            <div
-              class="bg-img avt"
-              style="background-image: url(assets/images/favion.png)"
-            ></div>
+        <!-- BOOK -->
+        <div class="book">
+          <!-- page 1-->
+          <div class="book-page" style="text-align: left">
+            <h1>Thông tin</h1>
             <br />
-            <h1 class="name">Tran Anh Tuat</h1>
-            <br />
-            <div class="social-list">
-              <a href="!" target="_blank">
-                <i class="fab fa-facebook-f fb"></i>
-              </a>
-              <a href="!" target="_blank">
-                <i class="fab fa-youtube ytb"></i>
-              </a>
-              <a href="!" target="_blank">
-                <i class="fab fa-github git"></i>
-              </a>
+            <div class="page-change">
+              <h3>Giới thiệu <span class="time">Trang 2</span></h3>
             </div>
             <br />
-            <p class="introduce">
-              Hello, I'm <span class="txt-header">Tuat</span>. I am
-              <span class="txt-header">Web/Mobile Developer</span>. Currently
-              I'm living and working in Vung Tau, Vietnam. I'm building a
-              Youtube channel to share my wonderful personal projects, you can
-              visit
-              <a
-                href="https://www.youtube.com/channel/UCnNgtK4tGlWcceXVzoyTg8Q?sub_confirmation=1"
-                target="_blank"
-                ><span class="txt-header">here</span></a
-              >, and don't forget to
-              <a
-                href="https://www.youtube.com/channel/UCnNgtK4tGlWcceXVzoyTg8Q?sub_confirmation=1"
-                target="_blank"
-                ><span class="txt-header">Subscribe </span></a
-              >if you love my videos.
-            </p>
-          </div>
-        </div>
-        <!-- end page -->
-        <!-- PAGE 5 -->
-        <div class="book-page page-right turn">
-          <!-- page 5 -->
-          <div class="page-front">
-            <div class="wrap-content">
-              <video width="100%" height="auto" controls>
-                <source src="assets/video/shoe-page.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-              <a href="https://youtu.be/5qg4rpD-OX4" target="_blank">
-                <div class="ytb-btn">
-                  <!-- <a href=""> -->
-                  <i class="bx bxl-youtube ytb"></i>
-                  <h3>YouTUBE</h3>
-                  <!-- </a> -->
-                </div>
-              </a>
-              <br />
-              <h1>Animated Nike Shoes Landing Page</h1>
-              <br />
-              <p>
-                In this video, I will show you how to make animated Nike
-                products landing page with only HTML, CSS and JS
-              </p>
-              <br />
+            <div class="page-change" @click="pageGo((pageNumber = 3))">
+              <h3>
+                Học vấn
+                <span class="time">Trang 3</span>
+              </h3>
             </div>
+            <br />
+            <div class="page-change" @click="pageGo((pageNumber = 3))">
+              <h3>
+                Kinh nghiệm
+                <span class="time">Trang 3</span>
+              </h3>
+            </div>
+            <br />
+            <div class="page-change" @click="pageGo((pageNumber = 4))">
+              <h3>
+                Kỹ năng
+                <span class="time">Trang 4</span>
+              </h3>
+            </div>
+            <br />
+            <div class="page-change" @click="pageGo((pageNumber = 5))">
+              <h3>
+                Dự án phát triển
+                <span class="time">Trang 5</span>
+              </h3>
+            </div>
+            <br />
+            <div class="page-change" @click="pageGo((pageNumber = 5))">
+              <h3>
+                Ngoại Ngữ / Chứng chỉ
+                <span class="time">Trang 5</span>
+              </h3>
+            </div>
+            <br />
+            <div class="page-change" @click="pageGo((pageNumber = 6))">
+              <h3>
+                Sở thích
+                <span class="time">Trang 6</span>
+              </h3>
+            </div>
+            <br />
+            <div class="page-change" @click="pageGo((pageNumber = 6))">
+              <h3>
+                Khác ...
+                <span class="time">Trang 6</span>
+              </h3>
+            </div>
+            <!-- turn page action -->
+            <div class="page-db" style="text-align: center">1</div>
           </div>
-        </div>
-        <!-- END PAGE 5 -->
-        <!-- PAGE 3 + 4 -->
-        <div class="book-page page-right turn" id="page-3">
-          <!-- page 3 -->
-          <div class="page-front">
-            <div class="wrap-content">
-              <video width="100%" height="auto" controls>
-                <source src="assets/video/admin-1.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-              <a href="https://youtu.be/bcyPawjQUSs" target="_blank">
-                <div class="ytb-btn">
-                  <!-- <a href=""> -->
-                  <i class="bx bxl-youtube ytb"></i>
-                  <h3>YouTUBE</h3>
-                  <!-- </a> -->
-                </div>
-              </a>
-              <br />
-              <h1>Responsive admin template with darkmode</h1>
-              <br />
-              <p>
-                I will show you how to create an admin layout with animated
-                sidebar menu by using HTML, CSS and JS.
-              </p>
-              <br />
-              <div class="page-change align-item-center" data-page="page-3">
-                Next <i class="bx bx-right-arrow-alt"></i>
+          <!-- end page 1-->
+          <!-- PAGE 6 -->
+          <div class="book-page page-right turn">
+            <!-- page 6 -->
+            <div class="page-front">
+              <div class="wrap-content">
+                <h1>Animated Nike Shoes Landing Page 6</h1>
+                <br />
+                <p>
+                  In this video, I will show you how to make animated Nike
+                  products landing page with only HTML, CSS and JS
+                </p>
+                <br />
+                <div class="page">6</div>
               </div>
             </div>
           </div>
-          <!-- page 4 -->
-          <div class="page-back">
-            <div class="wrap-content">
-              <video width="100%" height="auto" controls>
-                <source src="assets/video/animate-login.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-              <a href="https://youtu.be/5tVNFuKNsfw" target="_blank">
-                <div class="ytb-btn">
-                  <!-- <a href=""> -->
-                  <i class="bx bxl-youtube ytb"></i>
-                  <h3>YouTUBE</h3>
-                  <!-- </a> -->
+          <!-- END PAGE 6 -->
+          <!-- PAGE 4 + 5 -->
+          <div class="book-page page-right turn" id="page-5-6">
+            <!-- page 4 -->
+            <div class="page-front">
+              <div class="wrap-content">
+                <h1>Kỹ năng</h1>
+                <br />
+                <div class="wrap-input">
+                  <input
+                    type="text"
+                    placeholder="Kỹ năng..."
+                    class="input-setup main bc-none"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    v-model="book.skill['1'].main"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+
+                  <input
+                    type="text"
+                    class="input-setup bc-none support"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Mô tả..."
+                    v-model="book.skill['1'].support"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                  <input
+                    type="text"
+                    class="input-setup bc-none black-color note"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Mô tả..."
+                    v-model="book.skill['1'].note"
+                    :disabled="editStatus ? disabled : ''"
+                  />
                 </div>
-              </a>
-              <br />
-              <h1>Responsive Login and Registration Form with Animation</h1>
-              <br />
-              <p>
-                In this video, I will show you how to make an login and
-                registration form with awesome animation just by using HTML, CSS
-                and JavaScript.
-              </p>
-              <br />
-              <div
-                class="page-change back align-item-center"
-                data-page="page-3"
-              >
-                <i class="bx bx-left-arrow-alt"></i> Back
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- END PAGE 3 + 4 -->
-        <!-- PAGE 1 + 2 -->
-        <div class="book-page page-right turn" id="page-1">
-          <!-- page 1 -->
-          <div class="page-front flex-top">
-            <div class="wrap-content">
-              <h1>Educations</h1>
-              <br />
-              <h3>
-                University of Information Technology
-                <span class="time">08/2013 - 06/2018</span>
-              </h3>
-              <p>Major: Software engineer</p>
-              <br /><br />
-              <h1>Work Experiences</h1>
-              <br />
-              <h3>
-                MJE Inc
-                <span class="time">05/2019 - 06/2020</span>
-              </h3>
-              <p>Software engineer</p>
-              <br />
-              <h3>
-                Cpoint Vietnam
-                <span class="time">07/2018 - 04/2019</span>
-              </h3>
-              <p>Software engineer</p>
-              <br />
-              <h3>
-                Intel product Vietnam
-                <span class="time">03/2018 - 05/2018</span>
-              </h3>
-              <p>IT Automation intern</p>
-              <br />
-              <h3>
-                Global cybersoft Vietnam
-                <span class="time">02/2017 - 05/2020</span>
-              </h3>
-              <p>Software engineer intern</p>
-              <!-- turn page action -->
-              <div class="page-change align-item-center" data-page="page-1">
-                View my projects <i class="bx bx-right-arrow-alt"></i>
-              </div>
-            </div>
-          </div>
-          <!-- end page 1 -->
-          <!-- page 2 -->
-          <div class="page-back">
-            <div class="wrap-content">
-              <video width="100%" height="auto" controls>
-                <source src="assets/video/food-page-1.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-              <a href="https://youtu.be/_A7diZfXMkc" target="_blank">
-                <div class="ytb-btn">
-                  <i class="bx bxl-youtube ytb"></i>
-                  <h3>YouTUBE</h3>
+                <br />
+                <div class="wrap-input">
+                  <input
+                    type="text"
+                    placeholder="Kỹ năng..."
+                    class="input-setup main bc-none"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    v-model="book.skill['2'].main"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+
+                  <input
+                    type="text"
+                    class="input-setup bc-none support"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Mô tả..."
+                    v-model="book.skill['2'].support"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                  <input
+                    type="text"
+                    class="input-setup bc-none black-color note"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Mô tả..."
+                    v-model="book.skill['2'].note"
+                    :disabled="editStatus ? disabled : ''"
+                  />
                 </div>
-              </a>
-              <br />
-              <h1>Responsive food landing page</h1>
-              <br />
-              <p>
-                In this video, I will show you how to make Responsive Food
-                Landing Page with awesome animation just by using HTML, CSS and
-                JavaScript.
-              </p>
-              <div
-                class="page-change back align-item-center"
-                data-page="page-1"
-              >
-                <i class="bx bx-left-arrow-alt"></i> Back
+                <br />
+                <div class="wrap-input">
+                  <input
+                    type="text"
+                    placeholder="Kỹ năng..."
+                    class="input-setup main bc-none"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    v-model="book.skill['3'].main"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+
+                  <input
+                    type="text"
+                    class="input-setup bc-none support"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Mô tả..."
+                    v-model="book.skill['3'].support"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                  <input
+                    type="text"
+                    class="input-setup bc-none black-color note"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Mô tả..."
+                    v-model="book.skill['3'].note"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                </div>
+                <br />
+                <div class="wrap-input">
+                  <input
+                    type="text"
+                    placeholder="Kỹ năng..."
+                    class="input-setup main bc-none"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    v-model="book.skill['4'].main"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+
+                  <input
+                    type="text"
+                    class="input-setup bc-none support"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Mô tả..."
+                    v-model="book.skill['4'].support"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                  <input
+                    type="text"
+                    class="input-setup bc-none black-color note"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Mô tả..."
+                    v-model="book.skill['4'].note"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                </div>
+                <br />
+                <div class="wrap-input">
+                  <input
+                    type="text"
+                    placeholder="Kỹ năng..."
+                    class="input-setup main bc-none"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    v-model="book.skill['5'].main"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+
+                  <input
+                    type="text"
+                    class="input-setup bc-none support"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Mô tả..."
+                    v-model="book.skill['5'].support"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                  <input
+                    type="text"
+                    class="input-setup bc-none black-color note"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Mô tả..."
+                    v-model="book.skill['5'].note"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                </div>
+                <br />
+                <div class="wrap-input">
+                  <input
+                    type="text"
+                    placeholder="Kỹ năng..."
+                    class="input-setup main bc-none"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    v-model="book.skill['6'].main"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+
+                  <input
+                    type="text"
+                    class="input-setup bc-none support"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Mô tả..."
+                    v-model="book.skill['6'].support"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                  <input
+                    type="text"
+                    class="input-setup bc-none black-color note"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Mô tả..."
+                    v-model="book.skill['6'].note"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                </div>
+                <br />
+                <div class="wrap-input">
+                  <input
+                    type="text"
+                    placeholder="Kỹ năng..."
+                    class="input-setup main bc-none"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    v-model="book.skill['7'].main"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+
+                  <input
+                    type="text"
+                    class="input-setup bc-none support"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Mô tả..."
+                    v-model="book.skill['7'].support"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                  <input
+                    type="text"
+                    class="input-setup bc-none black-color note"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Mô tả..."
+                    v-model="book.skill['7'].note"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                </div>
+
+                <div class="page">4</div>
+                <div
+                  class="page-change page-change-bottom align-item-center"
+                  data-page="page-5-6"
+                  @click="pageIncrease"
+                >
+                  Next <i class="fas fa-arrow-right"></i>
+                </div>
+              </div>
+            </div>
+            <!-- page 5 -->
+            <div class="page-back">
+              <div class="wrap-content">
+                <h1>Responsive Login and Registration Form with Animation 5</h1>
+                <br />
+                <p>
+                  In this video, I will show you how to make an login and
+                  registration form with awesome animation just by using HTML,
+                  CSS and JavaScript.
+                </p>
+                <br />
+                <div class="page">5</div>
+                <div
+                  class="page-change page-change-bottom back align-item-center"
+                  data-page="page-5-6"
+                  @click="pageReduction"
+                >
+                  <i class="fas fa-arrow-left"></i> Back
+                </div>
               </div>
             </div>
           </div>
-          <!-- end page 2 -->
+          <!-- END PAGE 4 + 5 -->
+          <!-- PAGE 2 + 3 -->
+          <div class="book-page page-right turn" id="page-3-4">
+            <!-- page 2 -->
+            <div class="page-front flex-top">
+              <div class="wrap-content">
+                <div class="text-center">
+                  <div
+                    class="bg-img avt"
+                    style="background-image: url(assets/images/favion.png)"
+                  ></div>
+                  <br />
+                  <h1 class="name">{{ currentUser.username }}</h1>
+                  <br />
+                  <div class="social-list">
+                    <div class="social-list-item">
+                      <a href="!" target="_blank">
+                        <i class="fab fa-facebook-f fb"></i>
+                      </a>
+                      <input
+                        type="text"
+                        v-bind:class="{ 'd-block': editStatus }"
+                        placeholder="Facebook..."
+                        v-model="book.facebook"
+                        :disabled="editStatus ? disabled : ''"
+                      />
+                    </div>
+                    <div class="social-list-item">
+                      <a href="!" target="_blank">
+                        <i class="fas fa-envelope ytb"></i>
+                      </a>
+                      <input
+                        type="text"
+                        v-bind:class="{ 'd-block': editStatus }"
+                        placeholder="Email..."
+                        v-model="currentUser.email"
+                        :disabled="editStatus ? disabled : ''"
+                      />
+                    </div>
+                    <div class="social-list-item">
+                      <a href="!" target="_blank">
+                        <i class="fab fa-github git"></i>
+                      </a>
+                      <input
+                        type="text"
+                        v-bind:class="{ 'd-block': editStatus }"
+                        placeholder="Git..."
+                        v-model="book.git"
+                        :disabled="editStatus ? disabled : ''"
+                      />
+                    </div>
+                  </div>
+                  <br />
+                  <textarea
+                    placeholder="Write something.."
+                    class="introduce width-s100 input-setup bc-none height-s2 blue-color"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    v-model="book.introduce"
+                    :disabled="editStatus ? disabled : ''"
+                  ></textarea>
+                  <div class="page">2</div>
+                  <div
+                    class="page-change page-change-bottom align-item-center page-change-bottom"
+                    data-page="page-3-4"
+                    @click="pageIncrease"
+                  >
+                    View my projects <i class="fas fa-arrow-right"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end page 2 -->
+            <!-- page 3 -->
+            <!-- now -->
+            <div class="page-back">
+              <div class="wrap-content">
+                <h1>Trình độ học vấn</h1>
+                <br />
+                <h3>
+                  <input
+                    type="text"
+                    class="input-setup h2 bc-none"
+                    placeholder="Trường đại học..."
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    v-model="book.education.name"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+
+                  <div class="d-flex">
+                    <p style="padding-right: 2px">Ngành</p>
+                    <p>học:</p>
+                    <input
+                      type="text"
+                      placeholder="Ngành học..."
+                      class="input-setup bc-none black-color"
+                      v-bind:class="{ 'show-placeholder': editStatus }"
+                      v-model="book.education.majors"
+                      :disabled="editStatus ? disabled : ''"
+                    />
+                  </div>
+                  <input
+                    type="text"
+                    class="input-setup bc-none time black-color"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    v-model="book.education.time"
+                    placeholder="Thời gian học..."
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                </h3>
+                <br />
+                <br />
+                <br />
+                <h1>Kinh nghiệm làm việc</h1>
+                <br />
+                <div class="wrap-input">
+                  <input
+                    type="text"
+                    placeholder="Nơi làm việc..."
+                    class="input-setup main bc-none"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    v-model="book.experiences['1'].company"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+
+                  <input
+                    type="text"
+                    class="input-setup bc-none support"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Chức vị..."
+                    v-model="book.experiences['1'].position"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                  <input
+                    type="text"
+                    class="input-setup bc-none black-color note"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Thời gian làm việc..."
+                    v-model="book.experiences['1'].time"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                </div>
+                <br />
+                <div class="wrap-input">
+                  <input
+                    type="text"
+                    placeholder="Nơi làm việc..."
+                    class="input-setup main bc-none"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    v-model="book.experiences['2'].company"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+
+                  <input
+                    type="text"
+                    class="input-setup bc-none support"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Chức vị..."
+                    v-model="book.experiences['2'].position"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                  <input
+                    type="text"
+                    class="input-setup bc-none black-color note"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Thời gian làm việc..."
+                    v-model="book.experiences['2'].time"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                </div>
+                <br />
+                <div class="wrap-input">
+                  <input
+                    type="text"
+                    placeholder="Nơi làm việc..."
+                    class="input-setup main bc-none"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    v-model="book.experiences['3'].company"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+
+                  <input
+                    type="text"
+                    class="input-setup bc-none support"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Chức vị..."
+                    v-model="book.experiences['3'].position"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                  <input
+                    type="text"
+                    class="input-setup bc-none black-color note"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Thời gian làm việc..."
+                    v-model="book.experiences['3'].time"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                </div>
+                <br />
+                <div class="wrap-input">
+                  <input
+                    type="text"
+                    placeholder="Nơi làm việc..."
+                    class="input-setup main bc-none"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    v-model="book.experiences['4'].company"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+
+                  <input
+                    type="text"
+                    class="input-setup bc-none support"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Chức vị..."
+                    v-model="book.experiences['4'].position"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                  <input
+                    type="text"
+                    class="input-setup bc-none black-color note"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Thời gian làm việc..."
+                    v-model="book.experiences['4'].time"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                </div>
+
+                <div class="page">3</div>
+                <div
+                  class="page-change page-change-bottom back align-item-center"
+                  data-page="page-3-4"
+                  @click="pageReduction"
+                >
+                  <i class="fas fa-arrow-left"></i> Back
+                </div>
+              </div>
+            </div>
+            <!-- end page 3 -->
+          </div>
+          <!-- END PAGE 2 + 3 -->
         </div>
-        <!-- END PAGE 1 + 2 -->
+        <!-- END BOOK -->
+        <div class="cover right"></div>
+        <div class="page-status page-status-left">
+          <input
+            class="input-setup blue-color width-s1 align-item-center"
+            v-model="pageNew"
+          />
+        </div>
+        <div class="page-status page-status-center">/</div>
+        <div class="page-status page-status-right">{{ pageMax }}</div>
+        <div class="page-status page-status-go" @click="pageGo(pageNew)">
+          GO
+        </div>
+        <div class="page-edit d-flex">
+          <div v-if="!editStatus" @click="editStatus = !editStatus">
+            Chỉnh sửa
+          </div>
+          <div v-if="editStatus" @click="edit" style="margin-right: 10px">
+            Hoàn thành
+          </div>
+          <div v-if="editStatus" @click="cancle">Hủy</div>
+        </div>
       </div>
-      <!-- END BOOK -->
-
-      <div class="cover right"></div>
+      <!-- END BOOK WRAP -->
     </div>
-    <!-- END BOOK WRAP -->
   </div>
 </template>
 
 <script>
 // import UserService from '../services/user.service';
+import { Education, Experiences, Common } from '../models/forbook';
 export default {
   name: 'User',
+  //data
+  data() {
+    return {
+      pageNow: 1,
+      pageNew: 1,
+      pageMax: 6,
+      editStatus: false,
+      book: {
+        git: '',
+        facebook: '',
+        introduce: `Hello, I'm Tuat. I am Web/Mobile Developer. Currently I'm living and working in Vung Tau, Vietnam. I'm building a Youtube channel to share my wonderful personal projects, you can visit here, and don't forget to Subscribe if you love my videos`,
+        education: new Education(
+          'Đại học bách khoa Hà Nội',
+          'CNTT',
+          '09/2017 - 08/2022'
+        ),
+        experiences: {
+          1: new Experiences(
+            'Big Max QT',
+            'Thực tập sinh',
+            '06/2020 - 11/2020'
+          ),
+          2: new Experiences(),
+          3: new Experiences(),
+          4: new Experiences(),
+        },
+        skill: {
+          1: new Common('Làm việc nhóm', '', ''),
+          2: new Common('Git', 'Github,Gitlab', '1 năm'),
+          3: new Common(
+            'Front End-dev',
+            'HTML,CSS,JS,Vuejs',
+            '1 năm (Vuejs:3 tháng)'
+          ),
+          4: new Common('Back End-dev', 'NodeJs', '3 tháng'),
+          5: new Common('Database', 'MongoDB,Mysql', '6 tháng'),
+          6: new Common(),
+          7: new Common(),
+        },
+        project: {
+          1: new Common(
+            'Website tìm kiếm việc làm',
+            'github.com/ngocnk99/LapTrinhWeb-IT4552',
+            'Nodejs,Vuejs,mongoDB'
+          ),
+          2: new Common(),
+          3: new Common(),
+        },
+        languege: {
+          1: new Common('Tiếng Nhật', 'N3', '7/2018'),
+          2: new Common(),
+          3: new Common(),
+        },
+        interests: {
+          1: new Common('Lập trình web'),
+          2: new Common('Đọc truyện'),
+          3: new Common('Chơi game'),
+        },
+        others: {
+          1: new Common(),
+          2: new Common(),
+          3: new Common(),
+        },
+      },
+    };
+  },
+  methods: {
+    cancle() {
+      this.editStatus = !this.editStatus;
+    },
+    edit() {
+      this.editStatus = !this.editStatus;
+      console.log(this.book);
+    },
+    pageIncrease() {
+      this.pageNow += 2;
+      this.pageNew = this.pageNow;
+    },
+    pageReduction() {
+      this.pageNow -= 2;
+      this.pageNew = this.pageNow;
+    },
+    pageGo(pageNumber) {
+      let page;
+      let pageTurn = [];
+      if (pageNumber % 2 == 0) {
+        page = pageNumber - 1;
+      } else {
+        page = pageNumber - 0;
+      }
+      if (page > this.pageMax || page <= 0 || !Number.isInteger(page)) {
+        this.pageNew = this.pageNow;
+        return;
+      }
 
+      if (page - this.pageNow > 0) {
+        for (let i = parseInt(this.pageNow); i < page; ) {
+          i = parseInt(i) + 2;
+          pageTurn[i] = document.getElementById(`page-${i}-${i + 1}`);
+          setTimeout(() => {
+            pageTurn[i].classList.add('turn');
+            pageTurn[i].style.zIndex = i + 9;
+          }, 100 * i);
+        }
+      } else {
+        for (let i = parseInt(this.pageNow); i > page; ) {
+          i = parseInt(i) - 2;
+          pageTurn[i] = document.getElementById(`page-${i + 2}-${i + 3}`);
+          setTimeout(() => {
+            pageTurn[i].classList.remove('turn');
+            pageTurn[i].style.zIndex = 'unset';
+          }, 100 * i);
+        }
+      }
+
+      this.pageNow = page;
+      this.pageNew = page;
+    },
+  },
   mounted() {
-    // UserService.getUserBoard().then(
-    //   (response) => {
-    //     this.content = response.data;
-    //   },
-    //   (error) => {
-    //     this.content =
-    //       (error.response &&
-    //         error.response.data &&
-    //         error.response.data.message) ||
-    //       error.message ||
-    //       error.toString();
-    //   }
-    // );
     let turnPageBtn = document.querySelectorAll('.page-change');
 
     turnPageBtn.forEach((el, index) => {
       el.onclick = () => {
         let pageTurnId = el.getAttribute('data-page');
         if (!pageTurnId) return;
-
         let pageTurn = document.getElementById(pageTurnId);
 
         if (pageTurn.classList.contains('turn')) {
@@ -292,34 +757,90 @@ export default {
       }, (index + 1) * 200 + 2100);
     });
   },
+  computed: {
+    disabled() {
+      return false;
+    },
+    currentUser() {
+      return this.$store.state.auth.user;
+    },
+  },
 };
 </script>
 
-<style scoped>
-:root {
-  --body-bg: #333333;
-  --paper: #f3dfc1;
-  --cover: #2c3e50;
-  --txt-header: #2c3e50;
-
-  --blue: #4267b2;
-  --red: #db4437;
-  --yellow: #f4b400;
-  --green: #0f9d58;
-  --black: #000;
-  --grey: #7a7a7b;
-}
-
+<style scoped lang="scss">
 * {
   font-family: 'Caveat', cursive;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+.forMobile {
+  display: none !important;
+}
+@media only screen and (max-width: 1200px) {
+  .forComputer {
+    font-size: 10px;
+    h1 {
+      font-size: 2em;
+    }
+    .time {
+      font-size: 0.7em;
+    }
+    .introduce {
+      font-size: 1.2em;
+    }
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .forComputer {
+    font-size: 8px;
+    // display: none !important;
+  }
+  .forMobile {
+    display: block !important;
+  }
+}
+
+.input-setup {
+  font-family: 'Caveat', cursive;
+  border: none;
+  border-radius: 2px;
+  &::placeholder {
+    color: transparent;
+  }
+}
+.width-s1 {
+  width: 16px;
+}
+
+.width-s100 {
+  width: 100%;
+}
+
+.height-s2 {
+  height: 300px;
+}
+
+.bc-none {
+  background-color: transparent;
+}
+
+.black-color {
+  color: #333333;
+}
+
+.show-placeholder {
+  &::placeholder {
+    color: #333333 !important;
+  }
+}
 
 .fab {
   font-family: 'Font Awesome 5 Brands' !important;
 }
+
 body {
   height: 100vh;
   background-color: #333333;
@@ -337,12 +858,15 @@ h1 {
   color: #2c3e50;
 }
 
-h3 {
-  font-size: 1.3rem;
+h3,
+.h2,
+.h3 {
+  font-size: 1.3em;
+  color: #333333;
 }
 
 p {
-  font-size: 1.1rem;
+  font-size: 1.1em;
 }
 
 a {
@@ -350,13 +874,21 @@ a {
   color: unset;
 }
 
+.white-color {
+  color: white;
+}
+
+.blue-color {
+  color: #2c3e50;
+}
+
 .book-wrap {
-  height: 45rem;
-  width: 66rem;
-  border-radius: 1rem;
-  padding: 2rem;
+  height: 45em;
+  width: 66em;
+  border-radius: 1em;
+  padding: 2em;
   position: relative;
-  perspective: 250rem;
+  perspective: 250em;
   opacity: 0;
   transform: rotate(-20deg);
   animation: show-up 2s forwards;
@@ -370,10 +902,9 @@ a {
   height: 100%;
   background-color: #2c3e50;
   box-shadow: 0 0 100px rgba(0, 0, 0, 0.3);
-  border-top-left-radius: 1rem;
-  border-bottom-left-radius: 1rem;
+  border-top-left-radius: 1em;
+  border-bottom-left-radius: 1em;
   transform-origin: 100% 100%;
-
   transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
   transform: rotateY(0);
 }
@@ -391,14 +922,14 @@ a {
   width: 100%;
   height: 100%;
   display: flex;
-  perspective: 250rem;
+  perspective: 250em;
 }
 
 .book-page {
   position: relative;
   width: 50%;
   height: 100%;
-  padding: 2rem;
+  padding: 2em;
   display: grid;
   background-color: #f3dfc1;
   box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2),
@@ -419,19 +950,56 @@ a {
 }
 
 .avt {
-  width: 7rem;
-  height: 7rem;
-  border-radius: 2rem;
+  width: 7em;
+  height: 7em;
+  border-radius: 2em;
   margin: auto;
 }
 
 .name {
-  font-size: 3rem;
+  font-size: 3em;
+}
+
+.social-list {
+  display: flex;
+  margin: auto;
+  &-item {
+    position: relative;
+    input {
+      display: none;
+      position: absolute;
+      bottom: -1.5em;
+      color: #2c3e50;
+      min-width: 5em;
+      border: none;
+      background-color: transparent;
+
+      left: -2em;
+      text-align: left;
+    }
+    &:first-child {
+      margin-left: auto;
+      input {
+        left: -8em;
+      }
+    }
+    &:last-child {
+      margin-right: auto;
+      input {
+        left: 3.5em;
+      }
+    }
+    &:hover {
+      input {
+        display: block;
+      }
+    }
+  }
 }
 
 .social-list i {
-  margin: 0 0.5rem;
-  font-size: 2rem;
+  margin: 0 0.5em;
+  font-size: 2em;
   cursor: pointer;
   transition: 0.5s ease-in-out;
 }
@@ -458,7 +1026,7 @@ a {
 }
 
 .introduce {
-  font-size: 1.4rem;
+  font-size: 1.4em;
   text-align: justify;
 }
 
@@ -483,7 +1051,7 @@ a {
   position: absolute;
   width: 100%;
   height: 100%;
-  padding: 2rem;
+  padding: 2em;
   overflow: hidden;
 }
 
@@ -502,8 +1070,9 @@ a {
 }
 
 .time {
+  text-align: right;
   float: right;
-  font-size: 1rem;
+  font-size: 1em;
 }
 
 .wrap-content {
@@ -512,18 +1081,94 @@ a {
   height: 100%;
 }
 
+.wrap-input {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  .main {
+    font-size: 1.3em;
+    width: 100%;
+    color: #333333;
+  }
+  .support {
+    font-size: 1.1em;
+    width: 50%;
+    color: #2c3e50;
+  }
+  .note {
+    font-size: 1.1em;
+    width: 50%;
+    color: #2c3e50;
+    text-align: right;
+  }
+}
+
 .page-change {
-  position: absolute;
-  right: 0;
-  bottom: -1rem;
   font-weight: 600;
   color: #2c3e50;
   cursor: pointer;
+}
+
+.page-change:hover {
   animation: bounce-left 2s ease infinite;
 }
 
+.page-status {
+  position: absolute;
+  color: white;
+  bottom: 0.2em;
+  &-left {
+    right: 51%;
+  }
+  &-center {
+    right: 49.5%;
+  }
+  &-right {
+    right: 48%;
+  }
+  &-go {
+    right: 43%;
+    cursor: pointer;
+    &:hover {
+      animation: bounce-left 2s ease infinite;
+    }
+  }
+}
+.page-edit {
+  position: absolute;
+  color: white;
+  bottom: 0.2em;
+  right: 0;
+  cursor: pointer;
+}
+
+.page {
+  position: absolute;
+  right: 50%;
+  bottom: -1em;
+}
+
+.page-db {
+  position: absolute;
+  right: 50%;
+  bottom: 1em;
+}
+.page-change-bottom {
+  position: absolute;
+  right: 0;
+  bottom: -1em;
+}
+
 .page-change i {
-  font-size: 2rem;
+  font-size: 0.8em;
+  font-family: 'Font Awesome 5 Free';
+  position: relative;
+  top: 1px;
+  margin: 0px 2px;
+}
+
+.fas {
+  font-family: 'Font Awesome 5 Free';
 }
 
 .page-change.back {
@@ -532,7 +1177,7 @@ a {
 }
 
 video {
-  border-radius: 1rem;
+  border-radius: 1em;
   outline: transparent;
   border: none;
 }
@@ -542,21 +1187,21 @@ video {
   align-items: center;
   justify-content: flex-start;
   overflow: hidden;
-  width: 3.4rem;
-  padding: 0.2rem 0.7rem;
+  width: 3.4em;
+  padding: 0.2rem 0.7em;
   background-color: #db4437;
   color: #fff;
   transition: width 0.2s ease-in-out;
-  border-radius: 0.5rem;
+  border-radius: 0.5em;
 }
 
 .ytb-btn:hover {
-  width: 8.5rem;
+  width: 8.5em;
 }
 
 .ytb-btn i {
-  font-size: 2rem;
-  margin-right: 0.5rem;
+  font-size: 2em;
+  margin-right: 0.5em;
 }
 
 /* ANIMATION */
