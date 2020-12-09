@@ -1,10 +1,20 @@
 <template>
   <div class="mybook">
+    <div class="forSearch">
+      <input
+        type="text"
+        v-model="search"
+        placeholder="Tên/ Email chủ sở hữu book"
+      />
+      <div class="searchItem" @click="searchBook">
+        <i class="fas fa-search"></i>
+      </div>
+      <div class="searchStatus">{{ searchStatus }}</div>
+    </div>
     <div class="align-item-center forComputer">
       <!-- BOOK WRAP -->
       <div class="book-wrap">
         <div class="cover cover-left"></div>
-
         <!-- BOOK -->
         <div class="book">
           <!-- page 1-->
@@ -72,13 +82,174 @@
             <!-- page 6 -->
             <div class="page-front">
               <div class="wrap-content">
-                <h1>Animated Nike Shoes Landing Page 6</h1>
+                <h1>Sở thích</h1>
                 <br />
-                <p>
-                  In this video, I will show you how to make animated Nike
-                  products landing page with only HTML, CSS and JS
-                </p>
+                <div class="wrap-input">
+                  <input
+                    type="text"
+                    placeholder="Sở thích ..."
+                    class="input-setup main bc-none"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    v-model="book.interests['1'].main"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                  <input
+                    type="text"
+                    class="input-setup bc-none support"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Mô tả..."
+                    v-model="book.interests['1'].support"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                  <input
+                    type="text"
+                    class="input-setup bc-none black-color note"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Mô tả..."
+                    v-model="book.interests['1'].note"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                </div>
                 <br />
+                <div class="wrap-input">
+                  <input
+                    type="text"
+                    placeholder="Sở thích ..."
+                    class="input-setup main bc-none"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    v-model="book.interests['2'].main"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+
+                  <input
+                    type="text"
+                    class="input-setup bc-none support"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Mô tả..."
+                    v-model="book.interests['2'].support"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                  <input
+                    type="text"
+                    class="input-setup bc-none black-color note"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Mô tả..."
+                    v-model="book.interests['2'].note"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                </div>
+                <br />
+                <div class="wrap-input">
+                  <input
+                    type="text"
+                    placeholder="Sở thích ..."
+                    class="input-setup main bc-none"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    v-model="book.interests['3'].main"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+
+                  <input
+                    type="text"
+                    class="input-setup bc-none support"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Mô tả..."
+                    v-model="book.interests['3'].support"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                  <input
+                    type="text"
+                    class="input-setup bc-none black-color note"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Mô tả..."
+                    v-model="book.interests['3'].note"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                </div>
+                <br />
+                <h1>Khác</h1>
+                <br />
+                <div class="wrap-input">
+                  <input
+                    type="text"
+                    placeholder="..."
+                    class="input-setup main bc-none"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    v-model="book.others['1'].main"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+
+                  <input
+                    type="text"
+                    class="input-setup bc-none support"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Mô tả..."
+                    v-model="book.others['1'].support"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                  <input
+                    type="text"
+                    class="input-setup bc-none black-color note"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Mô tả..."
+                    v-model="book.others['1'].note"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                </div>
+                <div class="wrap-input">
+                  <input
+                    type="text"
+                    placeholder=" ..."
+                    class="input-setup main bc-none"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    v-model="book.others['2'].main"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+
+                  <input
+                    type="text"
+                    class="input-setup bc-none support"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Mô tả..."
+                    v-model="book.others['2'].support"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                  <input
+                    type="text"
+                    class="input-setup bc-none black-color note"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Mô tả..."
+                    v-model="book.others['2'].note"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                </div>
+                <div class="wrap-input">
+                  <input
+                    type="text"
+                    placeholder=" ..."
+                    class="input-setup main bc-none"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    v-model="book.others['3'].main"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+
+                  <input
+                    type="text"
+                    class="input-setup bc-none support"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Mô tả..."
+                    v-model="book.others['3'].support"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                  <input
+                    type="text"
+                    class="input-setup bc-none black-color note"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Thời gian nhận..."
+                    v-model="book.others['3'].note"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                </div>
                 <div class="page">6</div>
               </div>
             </div>
@@ -258,34 +429,6 @@
                     :disabled="editStatus ? disabled : ''"
                   />
                 </div>
-                <br />
-                <div class="wrap-input">
-                  <input
-                    type="text"
-                    placeholder="Kỹ năng..."
-                    class="input-setup main bc-none"
-                    v-bind:class="{ 'show-placeholder': editStatus }"
-                    v-model="book.skill['7'].main"
-                    :disabled="editStatus ? disabled : ''"
-                  />
-
-                  <input
-                    type="text"
-                    class="input-setup bc-none support"
-                    v-bind:class="{ 'show-placeholder': editStatus }"
-                    placeholder="Mô tả..."
-                    v-model="book.skill['7'].support"
-                    :disabled="editStatus ? disabled : ''"
-                  />
-                  <input
-                    type="text"
-                    class="input-setup bc-none black-color note"
-                    v-bind:class="{ 'show-placeholder': editStatus }"
-                    placeholder="Mô tả..."
-                    v-model="book.skill['7'].note"
-                    :disabled="editStatus ? disabled : ''"
-                  />
-                </div>
 
                 <div class="page">4</div>
                 <div
@@ -300,14 +443,218 @@
             <!-- page 5 -->
             <div class="page-back">
               <div class="wrap-content">
-                <h1>Responsive Login and Registration Form with Animation 5</h1>
+                <h1>Dụ án phát triển</h1>
                 <br />
-                <p>
-                  In this video, I will show you how to make an login and
-                  registration form with awesome animation just by using HTML,
-                  CSS and JavaScript.
-                </p>
+                <div class="wrap-input">
+                  <a
+                    v-if="!editStatus"
+                    v-bind:href="`https://${book.project['1'].support}`"
+                    target="_blank"
+                  >
+                    <input
+                      type="text"
+                      placeholder="Dụ án..."
+                      class="input-setup main bc-none"
+                      v-bind:class="{ 'show-placeholder': editStatus }"
+                      v-model="book.project['1'].main"
+                      :disabled="editStatus ? disabled : ''"
+                    />
+                  </a>
+                  <input
+                    type="text"
+                    placeholder="Dụ án..."
+                    v-if="editStatus"
+                    class="input-setup main bc-none"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    v-model="book.project['1'].main"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                  <input
+                    type="text"
+                    class="input-setup bc-none support"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Link..."
+                    v-model="book.project['1'].support"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                  <input
+                    type="text"
+                    class="input-setup bc-none black-color note"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Mô tả..."
+                    v-model="book.project['1'].note"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                </div>
                 <br />
+                <div class="wrap-input">
+                  <a
+                    v-if="!editStatus"
+                    v-bind:href="`https://${book.project['1'].support}`"
+                    target="_blank"
+                  >
+                    <input
+                      type="text"
+                      placeholder="Dụ án..."
+                      class="input-setup main bc-none"
+                      v-bind:class="{ 'show-placeholder': editStatus }"
+                      v-model="book.project['2'].main"
+                      :disabled="editStatus ? disabled : ''"
+                    />
+                  </a>
+                  <input
+                    type="text"
+                    placeholder="Dụ án..."
+                    v-if="editStatus"
+                    class="input-setup main bc-none"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    v-model="book.project['2'].main"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                  <input
+                    type="text"
+                    class="input-setup bc-none support"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Link..."
+                    v-model="book.project['2'].support"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                  <input
+                    type="text"
+                    class="input-setup bc-none black-color note"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Mô tả..."
+                    v-model="book.project['2'].note"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                </div>
+                <br />
+                <div class="wrap-input">
+                  <a
+                    v-if="!editStatus"
+                    v-bind:href="`https://${book.project['3'].support}`"
+                    target="_blank"
+                  >
+                    <input
+                      type="text"
+                      placeholder="Dụ án..."
+                      class="input-setup main bc-none"
+                      v-bind:class="{ 'show-placeholder': editStatus }"
+                      v-model="book.project['3'].main"
+                      :disabled="editStatus ? disabled : ''"
+                    />
+                  </a>
+                  <input
+                    type="text"
+                    placeholder="Dụ án..."
+                    v-if="editStatus"
+                    class="input-setup main bc-none"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    v-model="book.project['3'].main"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                  <input
+                    type="text"
+                    class="input-setup bc-none support"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Link..."
+                    v-model="book.project['3'].support"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                  <input
+                    type="text"
+                    class="input-setup bc-none black-color note"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Mô tả..."
+                    v-model="book.project['3'].note"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                </div>
+                <br />
+                <h1>Ngoại ngữ/ chứng chỉ</h1>
+                <br />
+                <div class="wrap-input">
+                  <input
+                    type="text"
+                    placeholder="Ngoại ngữ/ chứng chỉ ..."
+                    class="input-setup main bc-none"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    v-model="book.language['1'].main"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+
+                  <input
+                    type="text"
+                    class="input-setup bc-none support"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Mô tả..."
+                    v-model="book.language['1'].support"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                  <input
+                    type="text"
+                    class="input-setup bc-none black-color note"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Thời gian nhận..."
+                    v-model="book.language['1'].note"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                </div>
+                <div class="wrap-input">
+                  <input
+                    type="text"
+                    placeholder="Ngoại ngữ/ chứng chỉ ..."
+                    class="input-setup main bc-none"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    v-model="book.language['2'].main"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+
+                  <input
+                    type="text"
+                    class="input-setup bc-none support"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Mô tả..."
+                    v-model="book.language['2'].support"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                  <input
+                    type="text"
+                    class="input-setup bc-none black-color note"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Thời gian nhận..."
+                    v-model="book.language['2'].note"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                </div>
+                <div class="wrap-input">
+                  <input
+                    type="text"
+                    placeholder="Ngoại ngữ/ chứng chỉ ..."
+                    class="input-setup main bc-none"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    v-model="book.language['3'].main"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+
+                  <input
+                    type="text"
+                    class="input-setup bc-none support"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Mô tả..."
+                    v-model="book.language['3'].support"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                  <input
+                    type="text"
+                    class="input-setup bc-none black-color note"
+                    v-bind:class="{ 'show-placeholder': editStatus }"
+                    placeholder="Thời gian nhận..."
+                    v-model="book.language['3'].note"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+                </div>
+
                 <div class="page">5</div>
                 <div
                   class="page-change page-change-bottom back align-item-center"
@@ -331,11 +678,23 @@
                     style="background-image: url(assets/images/favion.png)"
                   ></div>
                   <br />
-                  <h1 class="name">{{ currentUser.username }}</h1>
+
+                  <input
+                    type="text"
+                    v-bind:placeholder="book.name"
+                    class="input-setup main bc-none name"
+                    v-bind:class="{ 'show-placeholder': true }"
+                    v-model="book.name"
+                    :disabled="editStatus ? disabled : ''"
+                  />
+
                   <br />
                   <div class="social-list">
                     <div class="social-list-item">
-                      <a href="!" target="_blank">
+                      <a
+                        v-bind:href="`https://www.${book.facebook}`"
+                        target="_blank"
+                      >
                         <i class="fab fa-facebook-f fb"></i>
                       </a>
                       <input
@@ -347,19 +706,20 @@
                       />
                     </div>
                     <div class="social-list-item">
-                      <a href="!" target="_blank">
-                        <i class="fas fa-envelope ytb"></i>
-                      </a>
+                      <i class="fas fa-envelope ytb"></i>
                       <input
                         type="text"
                         v-bind:class="{ 'd-block': editStatus }"
                         placeholder="Email..."
-                        v-model="currentUser.email"
+                        v-model="book.email"
                         :disabled="editStatus ? disabled : ''"
                       />
                     </div>
                     <div class="social-list-item">
-                      <a href="!" target="_blank">
+                      <a
+                        v-bind:href="`https://www.${book.git}`"
+                        target="_blank"
+                      >
                         <i class="fab fa-github git"></i>
                       </a>
                       <input
@@ -498,7 +858,6 @@
                     v-model="book.experiences['3'].company"
                     :disabled="editStatus ? disabled : ''"
                   />
-
                   <input
                     type="text"
                     class="input-setup bc-none support"
@@ -573,13 +932,9 @@
           GO
         </div>
         <div class="page-edit d-flex">
-          <div v-if="!editStatus" @click="editStatus = !editStatus">
-            Chỉnh sửa
-          </div>
-          <div v-if="editStatus" @click="edit" style="margin-right: 10px">
-            Hoàn thành
-          </div>
-          <div v-if="editStatus" @click="cancle">Hủy</div>
+          <router-link to="/login" class="nav-link">
+            Tạo sách cho bạn
+          </router-link>
         </div>
       </div>
       <!-- END BOOK WRAP -->
@@ -588,83 +943,83 @@
 </template>
 
 <script>
-// import UserService from '../services/user.service';
+import BookService from '../services/bookService';
 import { Education, Experiences, Common } from '../models/forbook';
 export default {
-  name: 'Home',
+  name: 'User',
   //data
   data() {
     return {
+      searchStatus: '',
+      search: '',
       pageNow: 1,
       pageNew: 1,
       pageMax: 6,
       editStatus: false,
       book: {
+        name: '',
+        email: '',
         git: '',
         facebook: '',
-        introduce: `Hello, I'm Tuat. I am Web/Mobile Developer. Currently I'm living and working in Vung Tau, Vietnam. I'm building a Youtube channel to share my wonderful personal projects, you can visit here, and don't forget to Subscribe if you love my videos`,
-        education: new Education(
-          'Đại học bách khoa Hà Nội',
-          'CNTT',
-          '09/2017 - 08/2022'
-        ),
+        introduce: '',
+        education: new Education('', '', ''),
         experiences: {
-          1: new Experiences(
-            'Big Max QT',
-            'Thực tập sinh',
-            '06/2020 - 11/2020'
-          ),
+          1: new Experiences('', '', ''),
           2: new Experiences(),
           3: new Experiences(),
-          4: new Experiences(),
+          4: new Experiences()
         },
         skill: {
-          1: new Common('Làm việc nhóm', '', ''),
-          2: new Common('Git', 'Github,Gitlab', '1 năm'),
-          3: new Common(
-            'Front End-dev',
-            'HTML,CSS,JS,Vuejs',
-            '1 năm (Vuejs:3 tháng)'
-          ),
-          4: new Common('Back End-dev', 'NodeJs', '3 tháng'),
-          5: new Common('Database', 'MongoDB,Mysql', '6 tháng'),
-          6: new Common(),
-          7: new Common(),
+          1: new Common('', '', ''),
+          2: new Common('', '', ''),
+          3: new Common('', '', ''),
+          4: new Common('', '', ''),
+          5: new Common('', '', ''),
+          6: new Common()
         },
         project: {
-          1: new Common(
-            'Website tìm kiếm việc làm',
-            'github.com/ngocnk99/LapTrinhWeb-IT4552',
-            'Nodejs,Vuejs,mongoDB'
-          ),
+          1: new Common('', '', ''),
           2: new Common(),
-          3: new Common(),
+          3: new Common()
         },
-        languege: {
-          1: new Common('Tiếng Nhật', 'N3', '7/2018'),
+        language: {
+          1: new Common('', '', ''),
           2: new Common(),
-          3: new Common(),
+          3: new Common()
         },
         interests: {
-          1: new Common('Lập trình web'),
-          2: new Common('Đọc truyện'),
-          3: new Common('Chơi game'),
+          1: new Common(''),
+          2: new Common(''),
+          3: new Common('')
         },
         others: {
           1: new Common(),
           2: new Common(),
-          3: new Common(),
-        },
-      },
+          3: new Common()
+        }
+      }
     };
   },
   methods: {
-    cancle() {
-      this.editStatus = !this.editStatus;
-    },
-    edit() {
-      this.editStatus = !this.editStatus;
-      console.log(this.book);
+    async searchBook() {
+      let reponData;
+      this.searchStatus = null;
+      const route = {
+        name: 'home'
+      };
+      if (this.search !== '') {
+        route.query = {
+          search: this.search
+        };
+        try {
+          reponData = (await BookService.getBook(this.search)).data;
+          if (reponData) {
+            this.book = reponData;
+          }
+        } catch (err) {
+          this.searchStatus = 'Không tìm thấy ';
+        }
+      }
     },
     pageIncrease() {
       this.pageNow += 2;
@@ -706,10 +1061,9 @@ export default {
           }, 100 * i);
         }
       }
-
       this.pageNow = page;
       this.pageNew = page;
-    },
+    }
   },
   mounted() {
     let turnPageBtn = document.querySelectorAll('.page-change');
@@ -760,33 +1114,62 @@ export default {
   computed: {
     disabled() {
       return false;
-    },
-    currentUser() {
-      return this.$store.state.auth.user;
-    },
+    }
   },
+  async created() {
+    let reponData;
+    reponData = (await BookService.getBook('ngocnk99@gmail.com')).data;
+    if (reponData) {
+      this.book = reponData;
+    }
+  }
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 * {
   font-family: 'Caveat', cursive;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+.forSearch {
+  position: relative;
+  display: flex;
+  input {
+    margin-left: auto;
+    border-radius: 10px;
+  }
+  .searchItem {
+    margin-right: auto;
+    color: white;
+  }
+  .searchStatus {
+    position: absolute;
+    color: white;
+    right: 50%;
+    bottom: -20px;
+    z-index: 100;
+  }
+}
+
 .forMobile {
   display: none !important;
 }
+
 @media only screen and (max-width: 1200px) {
   .forComputer {
     font-size: 10px;
+
     h1 {
       font-size: 2em;
     }
+
     .time {
       font-size: 0.7em;
     }
+
     .introduce {
       font-size: 1.2em;
     }
@@ -798,6 +1181,7 @@ export default {
     font-size: 8px;
     // display: none !important;
   }
+
   .forMobile {
     display: block !important;
   }
@@ -807,10 +1191,12 @@ export default {
   font-family: 'Caveat', cursive;
   border: none;
   border-radius: 2px;
+
   &::placeholder {
     color: transparent;
   }
 }
+
 .width-s1 {
   width: 16px;
 }
@@ -958,13 +1344,18 @@ a {
 
 .name {
   font-size: 3em;
+  text-align: center;
+  width: 100%;
+  color: #333333;
 }
 
 .social-list {
   display: flex;
   margin: auto;
+
   &-item {
     position: relative;
+
     input {
       display: none;
       position: absolute;
@@ -977,18 +1368,23 @@ a {
       left: -2em;
       text-align: left;
     }
+
     &:first-child {
       margin-left: auto;
+
       input {
         left: -8em;
       }
     }
+
     &:last-child {
       margin-right: auto;
+
       input {
         left: 3.5em;
       }
     }
+
     &:hover {
       input {
         display: block;
@@ -1085,16 +1481,19 @@ a {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+
   .main {
     font-size: 1.3em;
     width: 100%;
     color: #333333;
   }
+
   .support {
     font-size: 1.1em;
     width: 50%;
     color: #2c3e50;
   }
+
   .note {
     font-size: 1.1em;
     width: 50%;
@@ -1117,23 +1516,29 @@ a {
   position: absolute;
   color: white;
   bottom: 0.2em;
+
   &-left {
     right: 51%;
   }
+
   &-center {
     right: 49.5%;
   }
+
   &-right {
     right: 48%;
   }
+
   &-go {
     right: 43%;
     cursor: pointer;
+
     &:hover {
       animation: bounce-left 2s ease infinite;
     }
   }
 }
+
 .page-edit {
   position: absolute;
   color: white;
@@ -1153,6 +1558,7 @@ a {
   right: 50%;
   bottom: 1em;
 }
+
 .page-change-bottom {
   position: absolute;
   right: 0;
