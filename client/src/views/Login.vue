@@ -84,23 +84,23 @@ export default {
     return {
       user: new User('', ''),
       loading: false,
-      message: '',
+      message: ''
     };
   },
   computed: {
     loggedIn() {
       return this.$store.state.auth.status.loggedIn;
-    },
+    }
   },
   created() {
     if (this.loggedIn) {
-      this.$router.push('/profile');
+      this.$router.push('/mybook');
     }
   },
   methods: {
     handleLogin() {
       this.loading = true;
-      this.$validator.validateAll().then((isValid) => {
+      this.$validator.validateAll().then(isValid => {
         if (!isValid) {
           this.loading = false;
           return;
@@ -110,7 +110,7 @@ export default {
             () => {
               this.$router.push('/mybook');
             },
-            (error) => {
+            error => {
               this.loading = false;
               this.message =
                 (error.response &&
@@ -128,19 +128,19 @@ export default {
       firebase
         .auth()
         .signInWithPopup(provider)
-        .then((result) => {
+        .then(result => {
           // This gives you a Google Access Token. You can use it to access the Google API.
           // The signed-in user info.
           this.$store
             .dispatch('auth/login', {
               username: result.additionalUserInfo.profile.name,
-              password: result.additionalUserInfo.profile.email,
+              password: result.additionalUserInfo.profile.email
             })
             .then(
               () => {
                 this.$router.push('/mybook');
               },
-              (error) => {
+              error => {
                 this.loading = false;
                 this.message =
                   (error.response &&
@@ -151,24 +151,24 @@ export default {
               }
             );
         })
-        .catch(function () {});
+        .catch(function() {});
     },
     signInWithFB() {
       var provider = new firebase.auth.FacebookAuthProvider();
       firebase
         .auth()
         .signInWithPopup(provider)
-        .then((result) => {
+        .then(result => {
           this.$store
             .dispatch('auth/login', {
               username: result.user.displayName,
-              password: result.user.email,
+              password: result.user.email
             })
             .then(
               () => {
                 this.$router.push('/mybook');
               },
-              (error) => {
+              error => {
                 this.loading = false;
                 this.message =
                   (error.response &&
@@ -179,9 +179,9 @@ export default {
               }
             );
         })
-        .catch(function () {});
-    },
-  },
+        .catch(function() {});
+    }
+  }
 };
 </script>
 
