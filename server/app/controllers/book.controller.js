@@ -63,9 +63,9 @@ exports.addBook = (req, res) => {
 }
 
 exports.getBook = (req, res) => {
+    //  console.log(req.body)
     const search = req.query.search
-        // const search = 'ngocnk99@gmail.com'
-    console.log(search)
+    console.log(req.query)
     if (search) {
         User.find()
             .or([{ email: search }, { username: search }])
@@ -77,5 +77,16 @@ exports.getBook = (req, res) => {
                 }
             })
             .catch(error => console.log(error))
+    }
+}
+exports.getBookById = (req, res) => {
+    console.log(req.params)
+    let bookId =  req.params.bookId
+    if (bookId) {
+        User.findById(bookId)
+            .then(user => {
+                 return res.json(user.book)
+            })
+            .catch(error =>  res.json('khong thay'))
     }
 }

@@ -1117,11 +1117,16 @@ export default {
     }
   },
   async created() {
+    let bookId = this.$route.params.bookId
     let reponData;
-    reponData = (await BookService.getBook('ngocnk99@gmail.com')).data;
+    if(bookId){
+      reponData = (await BookService.getBookById(bookId)).data;
+    }else{
+      reponData = (await BookService.getBook('ngocnk99@gmail.com')).data;
+    }
     if (reponData) {
       this.book = reponData;
-    }
+    }  
   }
 };
 </script>
