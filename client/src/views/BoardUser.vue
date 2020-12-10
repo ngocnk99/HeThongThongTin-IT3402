@@ -662,18 +662,16 @@
             <div class="page-front flex-top">
               <div class="wrap-content">
                 <div class="text-center">
+                  <button @click="onPickFile">Avatar</button>
                   <input
                     type="file"
-                    class="input-setup bc-none support"
-                    v-bind:class="{ 'show-placeholder': editStatus }"
-                    v-if="editStatus"
-                    placeholder="Chức vị..."
-                    :disabled="editStatus ? disabled : ''"
-                  />
+                    class="d-none" ref="fileInput" accept="image/*" @change="onFilePicked">
                   <div
                     class="bg-img avt"
                     style="background-image: url(assets/images/favion.png)"
-                  ></div>
+                  >
+                  <img :src="imageUrl" style="height:150px">
+                  </div>
                   <br />
 
                   <input
@@ -951,6 +949,8 @@ export default {
   //data
   data() {
     return {
+      imageUrl:'',
+      image:null,
       pageNow: 1,
       pageNew: 1,
       pageMax: 6,
@@ -1010,6 +1010,26 @@ export default {
       this.$store.state.auth.user.book = this.book;
       BookService.addBook(this.$store.state.auth.user);
       this.editStatus = !this.editStatus;
+    },
+    onPickFile(){
+      this.$refs.fileInput.click();
+    },
+    onFilePicked(){
+      const files = event.target.files
+      
+      let filename =files[0].name;
+      if(filename.lastIndexOf('.')<= 0){
+        return alert('Hãy thêm ảnh của bận vào')
+      }
+      else{
+          alert(filename);
+          const fileReader = new FileReader();
+          fileReader.addEventListener('load',()=>{
+            this.imageUrl = fileReader.result
+          })
+          fileReader.readAsDataURL(files[0])
+          this.image = files[0]
+      }
     },
     pageIncrease() {
       this.pageNow += 2;
