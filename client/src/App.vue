@@ -51,6 +51,7 @@
     <div class="container">
       <router-view />
     </div>
+    
   </div>
 </template>
 
@@ -86,6 +87,14 @@ export default {
 
 <style >
 #app {
+  height: 100vh;
   background-color: #333333;
+}
+
+.container{
+
+}
+.forseach{
+  margin: 10px 0px;
 }
 </style>

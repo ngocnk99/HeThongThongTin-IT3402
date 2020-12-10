@@ -7,7 +7,7 @@
         placeholder="Tên/ Email chủ sở hữu book"
       />
       <div class="searchItem" @click="searchBook">
-        <i class="fas fa-search"></i>
+        <i class="fas fa-search fa-2x"></i>
       </div>
       <div class="searchStatus">{{ searchStatus }}</div>
     </div>
@@ -1137,13 +1137,19 @@ export default {
 .forSearch {
   position: relative;
   display: flex;
+  margin: 2.5% 0;
   input {
     margin-left: auto;
     border-radius: 10px;
+    height: 50px;
   }
   .searchItem {
+    text-align: center;
     margin-right: auto;
     color: white;
+    i{    
+      margin-top: 10px; 
+    }
   }
   .searchStatus {
     position: absolute;
