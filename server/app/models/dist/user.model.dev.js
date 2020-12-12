@@ -7,9 +7,6 @@ var User = mongoose.model("User", new mongoose.Schema({
   email: String,
   password: String,
   book: Object,
-  file: {
-    type: Array
-  },
   roles: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: "Role"
