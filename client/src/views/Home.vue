@@ -673,12 +673,10 @@
             <div class="page-front flex-top">
               <div class="wrap-content">
                 <div class="text-center">
-                  <div
-                    class="bg-img avt"
-                    style="background-image: url(assets/images/favion.png)"
-                  ></div>
+                  <div class="avatar">
+                    <img  class="avatar-image" :src="book.imageUrl" >
+                  </div>
                   <br />
-
                   <input
                     type="text"
                     v-bind:placeholder="book.name"
@@ -1358,6 +1356,13 @@ a {
   text-align: center;
   width: 100%;
   color: #333333;
+}
+
+.avatar{
+  height: 150px;
+  &-image{
+    height: 150px;
+  }
 }
 
 .social-list {

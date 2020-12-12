@@ -662,17 +662,15 @@
             <div class="page-front flex-top">
               <div class="wrap-content">
                 <div class="text-center">
-                  <button @click="onPickFile">Avatar</button>
-                  <input
-                    type="file"
-                    class="d-none" ref="fileInput" accept="image/*" @change="onFilePicked">
-                  <div
-                    class="bg-img avt"
-                    style="background-image: url(assets/images/favion.png)"
-                  >
-                  <img :src="imageUrl" style="height:150px">
+                  <div class="avatar">
+                    <button @click="onPickFile" v-bind:class="{ 'd-none': !editStatus }"
+                    ><span>Avatar</span></button>
+                    <input
+                      type="file"
+                      class="d-none" ref="fileInput" accept="image/*" @change="onFilePicked">
+                    <img  class="avatar-image" :src="book.imageUrl" >
+                    <br />
                   </div>
-                  <br />
 
                   <input
                     type="text"
@@ -942,6 +940,7 @@
 </template>
 
 <script>
+import firebase from 'firebase';
 import BookService from '../services/bookService';
 import { Education, Experiences, Common } from '../models/forbook';
 export default {
@@ -949,19 +948,21 @@ export default {
   //data
   data() {
     return {
-      imageUrl:'',
+      error:'',
+      progress :null,
       image:null,
       pageNow: 1,
       pageNew: 1,
       pageMax: 6,
       editStatus: false,
       book: {
+        imageUrl:null,
         name: '',
         email: this.$store.state.auth.user.email,
         git: '',
         facebook: '',
         introduce: '',
-        education: new Education('', '', ''),
+        education: new Education('', '', '') ,
         experiences: {
           1: new Experiences('', '', ''),
           2: new Experiences('', '', ''),
@@ -1006,7 +1007,8 @@ export default {
         this.book = this.$store.state.auth.user.book;
       }
     },
-    edit() {
+    async edit() {
+      this.book.imageUrl =  await this.onUploadFile();
       this.$store.state.auth.user.book = this.book;
       BookService.addBook(this.$store.state.auth.user);
       this.editStatus = !this.editStatus;
@@ -1015,21 +1017,34 @@ export default {
       this.$refs.fileInput.click();
     },
     onFilePicked(){
-      const files = event.target.files
-      
-      let filename =files[0].name;
+      this.image = event.target.files[0];
+      let filename = this.image.name;
       if(filename.lastIndexOf('.')<= 0){
         return alert('Hãy thêm ảnh của bận vào')
       }
       else{
-          alert(filename);
           const fileReader = new FileReader();
           fileReader.addEventListener('load',()=>{
-            this.imageUrl = fileReader.result
+            this.book.imageUrl = fileReader.result
           })
-          fileReader.readAsDataURL(files[0])
-          this.image = files[0]
+          fileReader.readAsDataURL(this.image)
       }
+    },
+    onUploadFile(){
+      if(!this.image){
+        return this.$store.state.auth.user.book.imageUrl;
+      }
+      const storageRef = firebase.storage().ref(`image/${this.image.name}`).put(this.image);
+      return new Promise(resolve => {
+        storageRef.on('state_changed', () =>{       
+          }, (error) => {
+            this.error = error.message;
+          }, () => {
+            storageRef.snapshot.ref.getDownloadURL().then((downloadURL) => {
+              resolve(downloadURL) ;
+            });
+        });
+      })  
     },
     pageIncrease() {
       this.pageNow += 2;
@@ -1144,6 +1159,11 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.mybook{
+  position: absolute;
+  bottom: 10%;
 }
 
 .forMobile {
@@ -1339,6 +1359,27 @@ a {
   text-align: center;
   width: 100%;
   color: #333333;
+}
+
+.avatar{
+  height: 150px;
+  position: relative;
+  button{
+    border:none;
+    position: absolute;
+    top:0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color:transparent;
+    span{
+      border: 1px solid gray;
+      background-color: rgba(255,255,255,0.4);
+    }
+  }
+  &-image{
+    height: 150px;
+  }
 }
 
 .social-list {
