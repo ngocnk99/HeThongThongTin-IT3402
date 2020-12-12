@@ -673,12 +673,10 @@
             <div class="page-front flex-top">
               <div class="wrap-content">
                 <div class="text-center">
-                  <div
-                    class="bg-img avt"
-                    style="background-image: url(assets/images/favion.png)"
-                  ></div>
+                  <div class="avatar">
+                    <img  class="avatar-image" :src="book.imageUrl" >
+                  </div>
                   <br />
-
                   <input
                     type="text"
                     v-bind:placeholder="book.name"
@@ -1117,11 +1115,16 @@ export default {
     }
   },
   async created() {
+    let bookId = this.$route.params.bookId
     let reponData;
-    reponData = (await BookService.getBook('ngocnk99@gmail.com')).data;
+    if(bookId){
+      reponData = (await BookService.getBookById(bookId)).data;
+    }else{
+      reponData = (await BookService.getBook('ngocnk99@gmail.com')).data;
+    }
     if (reponData) {
       this.book = reponData;
-    }
+    }  
   }
 };
 </script>
@@ -1353,6 +1356,13 @@ a {
   text-align: center;
   width: 100%;
   color: #333333;
+}
+
+.avatar{
+  height: 150px;
+  &-image{
+    height: 150px;
+  }
 }
 
 .social-list {

@@ -18,6 +18,11 @@ export const router = new Router({
             component: Home
         },
         {
+            path: '/home/:bookId',
+            name: 'home',
+            component: Home
+        },
+        {
             path: '/login',
             component: Login
         },
