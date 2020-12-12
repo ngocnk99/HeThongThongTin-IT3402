@@ -2,19 +2,26 @@
 
 var db = require("../models");
 
-var User = db.user;
+var User = db.user; <<
+<< << < HEAD
+    ===
+    === =
 
 
-exports.addBook = function(req, res) {
-    console.log(req.body);
-    User.updateOne({
-        email: req.body.email
-    }, {
-        book: req.body
-    })["catch"](function(error) {
-        return console.log(error);
-    });
-};
+    exports.addBook = function(req, res) {
+        console.log(req.body);
+        User.updateOne({
+            email: req.body.email
+        }, {
+            book: req.body
+        })["catch"](function(error) {
+            return console.log(error);
+        });
+    }; >>>
+>>> > 2 f5467f75593d9c52f52fbb1507fd77947067a32
+
+
+
 
 exports.getBook = function(req, res) {
     //  console.log(req.body)
