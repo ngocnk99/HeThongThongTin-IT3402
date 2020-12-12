@@ -7,7 +7,7 @@
         <!-- BOOK -->
         <div class="book">
           <!-- page 1-->
-          <div class="book-page" style="text-align: left">
+            <div class="book-page" style="text-align: left">
             <h1>Thông tin</h1>
             <br />
             <div class="page-change">
@@ -1008,7 +1008,9 @@ export default {
       }
     },
     async edit() {
-      this.book.imageUrl =  await this.onUploadFile();
+      if(this.image){
+        this.book.imageUrl =  await this.onUploadFile();
+      }
       this.$store.state.auth.user.book = this.book;
       BookService.addBook(this.$store.state.auth.user);
       this.editStatus = !this.editStatus;
