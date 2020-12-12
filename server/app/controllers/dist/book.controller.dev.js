@@ -1,15 +1,9 @@
 "use strict";
 
-var config = require("../config/auth.config");
-
 var db = require("../models");
 
 var User = db.user;
-var Role = db.role;
 
-var jwt = require("jsonwebtoken");
-
-var bcrypt = require("bcryptjs");
 
 exports.addBook = function (req, res) {
   console.log(req.body);
