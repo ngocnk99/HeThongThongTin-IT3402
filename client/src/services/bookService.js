@@ -33,6 +33,9 @@ class BookService {
         localStorage.setItem('user', JSON.stringify(book));
         return axios.post(url + '/mybook/edit', book.book);
     }
+    static getBookById(bookId) {
+        return axios.get(url+`/${bookId}`);
+    }
 
 }
 
