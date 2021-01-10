@@ -19,8 +19,11 @@
           >
         </li>
         <li class="nav-item" id="change_status" href @click.prevent="changeStatus">
-          <router-link  to="" class="nav-link"
-            >Hiệu ứng</router-link
+          <router-link v-if="snowStatus" to="" class="nav-link"
+            >Tắt hiệu ứng</router-link
+          >
+          <router-link v-if="!snowStatus" to="" class="nav-link"
+            >Bật hiệu ứng</router-link
           >
         </li>
       </div>
