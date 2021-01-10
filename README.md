@@ -36,7 +36,10 @@
 	> A Nodejs express project
 
 	## Build Setup
-	(install mongo DB)
+	
+	#install mongodb
+        link: https://docs.mongodb.com/manual/administration/install-community/
+	
 	``` bash
  	cd server
 	# install dependencies
