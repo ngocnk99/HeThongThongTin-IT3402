@@ -41,6 +41,7 @@
  	cd server
 	# install dependencies
 	npm install
+	npm install -g nodemon
 
 	# serve with hot reload at localhost:8090
 	npm run dev
